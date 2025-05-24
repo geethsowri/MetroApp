@@ -9,7 +9,6 @@ import {
   Zap,
 } from "lucide-react";
 
-// MinHeap implementation for Dijkstra's algorithm
 class MinHeap {
   constructor() {
     this.heap = [];
@@ -84,7 +83,6 @@ class MinHeap {
   }
 }
 
-// Metro Graph implementation with Dijkstra's Algorithm
 class MetroGraph {
   constructor() {
     this.stations = new Map();
@@ -200,8 +198,8 @@ class MetroGraph {
   }
 
   calculateTime(stationCount) {
-    const stationTime = (stationCount - 1) * 2; // 2 minutes between stations
-    const waitTime = 3; // Average waiting time
+    const stationTime = (stationCount - 1) * 2;
+    const waitTime = 3;
     return Math.round(stationTime + waitTime);
   }
 
@@ -228,11 +226,9 @@ const MetroApp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Initialize metro graph with real Hyderabad Metro data
   const metroGraph = useMemo(() => {
     const graph = new MetroGraph();
 
-    // Red Line (Line 1) - Miyapur to LB Nagar
     const redLineConnections = [
       ["Miyapur", "JNTU College", 2.1],
       ["JNTU College", "KPHB Colony", 1.8],
@@ -262,7 +258,6 @@ const MetroApp = () => {
       ["Victoria Memorial", "LB Nagar", 1.8],
     ];
 
-    // Blue Line (Line 2) - Nagole to Raidurg
     const blueLineConnections = [
       ["Nagole", "Uppal", 2.0],
       ["Uppal", "Stadium", 1.5],
@@ -284,7 +279,6 @@ const MetroApp = () => {
       ["Hi-Tech City", "Raidurg", 1.5],
     ];
 
-    // Green Line (Line 3) - JBS to Falaknuma
     const greenLineConnections = [
       ["JBS", "Parade Ground", 1.0],
       ["Parade Ground", "MG Bus Station", 2.0],
@@ -295,25 +289,21 @@ const MetroApp = () => {
       ["Shamshabad", "Falaknuma", 1.3],
     ];
 
-    // Add Red Line
     redLineConnections.forEach(([station1, station2, distance]) => {
       graph.addEdge(station1, station2, distance, "red");
     });
 
-    // Add Blue Line
     blueLineConnections.forEach(([station1, station2, distance]) => {
       graph.addEdge(station1, station2, distance, "blue");
     });
 
-    // Add Green Line
     greenLineConnections.forEach(([station1, station2, distance]) => {
       graph.addEdge(station1, station2, distance, "green");
     });
 
-    // Interchange connections
-    graph.addEdge("Ameerpet", "Begumpet", 2.5, "interchange"); // Red-Blue
-    graph.addEdge("MG Bus Station", "Imlibun", 1.5, "interchange"); // Red-Green
-    graph.addEdge("JBS", "Jubilee Hills Check Post", 0.5, "interchange"); // Blue-Green
+    graph.addEdge("Ameerpet", "Begumpet", 2.5, "interchange");
+    graph.addEdge("MG Bus Station", "Imlibun", 1.5, "interchange");
+    graph.addEdge("JBS", "Jubilee Hills Check Post", 0.5, "interchange");
 
     return graph;
   }, []);
@@ -323,7 +313,6 @@ const MetroApp = () => {
   }, [metroGraph]);
 
   const calculateRoute = async (source, destination) => {
-    // Simulate processing time for better UX
     await new Promise((resolve) => setTimeout(resolve, 800));
     return metroGraph.dijkstra(source, destination);
   };
@@ -387,7 +376,6 @@ const MetroApp = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-950 to-black">
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="bg-gradient-to-r from-indigo-700 to-blue-900 p-3 rounded-full">
@@ -405,14 +393,10 @@ const MetroApp = () => {
             Real-time shortest path calculation
           </div>
         </div>
-
-        {/* Main Content */}
         <div className="max-w-4xl mx-auto">
-          {/* Route Form */}
           <div className="bg-gray-900 rounded-2xl shadow-xl p-8 mb-8 border border-gray-800">
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Source Station */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-200 mb-2">
                     <MapPin className="inline w-4 h-4 mr-1" />
@@ -431,8 +415,6 @@ const MetroApp = () => {
                     ))}
                   </select>
                 </div>
-
-                {/* Destination Station */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-200 mb-2">
                     <MapPin className="inline w-4 h-4 mr-1" />
@@ -452,20 +434,16 @@ const MetroApp = () => {
                   </select>
                 </div>
               </div>
-
-              {/* Error Display */}
               {error && (
                 <div className="bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded-lg">
                   {error}
                 </div>
               )}
-
-              {/* Action Buttons */}
               <div className="flex gap-4">
                 <button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="flex-1 bg-gradient-to-r from-blue-700 to-indigo-900 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-800 hover:to-indigo-950 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center"
+                  className="cursor-pointer flex-1 bg-gradient-to-r from-blue-700 to-indigo-900 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-800 hover:to-indigo-950 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center"
                 >
                   {loading ? (
                     <>
@@ -481,23 +459,19 @@ const MetroApp = () => {
                 </button>
                 <button
                   onClick={resetForm}
-                  className="px-6 py-3 border border-gray-700 text-gray-200 rounded-lg font-semibold hover:bg-gray-800 transition-all"
+                  className="cursor-pointer px-6 py-3 border border-gray-700 text-gray-200 rounded-lg font-semibold hover:bg-gray-800 transition-all"
                 >
                   Reset
                 </button>
               </div>
             </div>
           </div>
-
-          {/* Route Results */}
           {routeData && (
             <div className="bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-800">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
                 <Route className="w-6 h-6 mr-2 text-blue-400" />
                 Optimal Route Details
               </h2>
-
-              {/* Route Summary */}
               <div className="grid md:grid-cols-4 gap-4 mb-8">
                 <div className="bg-gradient-to-r from-green-900 to-emerald-900 p-4 rounded-lg border border-green-800">
                   <div className="flex items-center justify-between">
@@ -512,7 +486,6 @@ const MetroApp = () => {
                     <Navigation className="w-8 h-8 text-green-400" />
                   </div>
                 </div>
-
                 <div className="bg-gradient-to-r from-blue-900 to-cyan-900 p-4 rounded-lg border border-blue-800">
                   <div className="flex items-center justify-between">
                     <div>
@@ -525,7 +498,6 @@ const MetroApp = () => {
                     <IndianRupee className="w-8 h-8 text-blue-400" />
                   </div>
                 </div>
-
                 <div className="bg-gradient-to-r from-purple-900 to-violet-900 p-4 rounded-lg border border-purple-800">
                   <div className="flex items-center justify-between">
                     <div>
@@ -539,7 +511,6 @@ const MetroApp = () => {
                     <Clock className="w-8 h-8 text-purple-400" />
                   </div>
                 </div>
-
                 <div className="bg-gradient-to-r from-orange-900 to-amber-900 p-4 rounded-lg border border-orange-800">
                   <div className="flex items-center justify-between">
                     <div>
@@ -554,8 +525,6 @@ const MetroApp = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Route Path */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-100 mb-4">
                   Shortest Path ({routeData.path.length} stations)
@@ -591,13 +560,11 @@ const MetroApp = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Algorithm Info */}
               <div className="mt-6 p-4 bg-gradient-to-r from-blue-900 to-indigo-900 rounded-lg border border-blue-800">
                 <h4 className="font-semibold text-blue-200 mb-2">
                   Algorithm Details
                 </h4>
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-300">
+                <div className="grid md:grid-cols-2 gap-2 text-sm text-blue-300">
                   <div>
                     <strong>Algorithm:</strong> Dijkstra's Shortest Path
                   </div>
