@@ -16,7 +16,3 @@ cd metro-app
 npm install
 npm start
 ```
-
-## License
-
-MIT
