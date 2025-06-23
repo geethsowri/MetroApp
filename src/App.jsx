@@ -390,7 +390,7 @@ const MetroApp = () => {
           </p>
           <div className="flex items-center justify-center mt-2 text-sm text-gray-400">
             <Zap className="w-4 h-4 mr-1" />
-            Real-time shortest path calculation
+            Shortest path calculation
           </div>
         </div>
         <div className="max-w-4xl mx-auto">
