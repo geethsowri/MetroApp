@@ -1,18 +1,10 @@
 # Metro App
 
-A minimal application for metro route planning and navigation.
+A smart and intuitive Hyderabad Metro Route Finder app **powered by Dijkstra's Algorithm**. This tool helps users find the shortest metro route between two stations, showing **detailed route metrics** including **distance, fare, travel time, interchanges, and path visualization.**
 
-## Features
+### Tools used
+- `ReactJS` `TailwindCSS`
+- `Dijkstra's Shortest Path` `Min-Heap Priority Queue`
 
-- Search for metro routes
-- View station details
-- Real-time updates
 
-## Getting Started
-
-```bash
-git clone https://github.com/yourusername/metro-app.git
-cd metro-app
-npm install
-npm start
-```
+[Start using MetroApp—Hyd ↗](https://metroapp-hyd.vercel.app/)
