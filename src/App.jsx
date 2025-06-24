@@ -321,12 +321,12 @@ const MetroApp = () => {
     setError("");
 
     if (!sourceStation || !destinationStation) {
-      setError("Please select both source and destination stations");
+      setError("Please select both source and destination stations.");
       return;
     }
 
     if (sourceStation === destinationStation) {
-      setError("Source and destination stations cannot be the same");
+      setError("Source and destination stations cannot be the same.");
       return;
     }
 
@@ -336,7 +336,7 @@ const MetroApp = () => {
       const result = await calculateRoute(sourceStation, destinationStation);
 
       if (result.path.length === 0) {
-        setError("No route found between the selected stations");
+        setError("No route found between the selected stations.");
         setRouteData(null);
       } else {
         setRouteData(result);
