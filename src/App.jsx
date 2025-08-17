@@ -325,8 +325,6 @@ const App = () => {
                 ))}
               </div>
             </div>
-
-            {/* Algorithm Info */}
             <div className="mt-8 p-4 bg-gray-800 border border-gray-700 rounded-md text-gray-400 text-sm grid grid-cols-1 md:grid-cols-2 gap-2">
               <div>
                 <strong className="text-gray-300">Algorithm:</strong> Dijkstra's Shortest Path
