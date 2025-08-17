@@ -8,7 +8,7 @@ import {
   Loader2,
   Zap,
 } from "lucide-react";
-import MetroGraph from "./core/MetroGraph"; // update path based on your folder structure
+import MetroGraph from "./core/MetroGraph";
 
 const App = () => {
   const [sourceStation, setSourceStation] = useState("");
